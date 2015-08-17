@@ -3,29 +3,40 @@
 	<meta charset="utf-8">
   	<title>Forum</title>
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="http://localhost:3000/skeleton.css">
-		<link rel="stylesheet" href="http://localhost:3000/normalize.css">
-		<link rel = "stylesheet" type = "text.css" href= "http://localhost:3000/style.css">
+	<link rel="stylesheet" href="http://localhost:3000/skeleton.css">
+	<link rel="stylesheet" href="http://localhost:3000/normalize.css">
+	<link rel = "stylesheet" type = "text.css" href= "http://localhost:3000/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 </head>
 	<body>
 		<div class="container">
 			<div class="sixteen columns">	
 		<h1>Welcome to the Forum</h1>
+		<p>This is a place for discussion. Please feel free to <a href="/users/new">create a user name</a> and <a href="/threads/new">add a new thread</a>. Thanks for dropping by!</p>
+		<hr />
 			</div>
 			<div class="sixteen columns">
 			<% thread.forEach(function(thread){ %>
-				    
-				<h2>Title: <a href="/threads/<%= thread.id %>"><%= thread.title %></a></h2>
-				<h3>Author: <%= thread.user_name %></h3>
-				<h4>Post: <%= thread.content %></h4>
+			<div class="five columns">
+				<h4>Title: <a href="/threads/<%= thread.id %>"><%= thread.title %></a></h4>
+			</div>
+			<div class="five columns">
+				<h4>Author: <%= thread.user_name %></h4>
+			</div>
+			<div class="twelve columns"
+				<p>Post: <%= thread.content %></p>
+			
 				<p>votes: <%= thread.votes %></p>
-				
+			
+			
 				<% var counter = 0 %>
 				<% comments.forEach(function(commentcount){ %>
 				<% if (commentcount.thread_id == thread.id)	{ counter ++} %>
 				<%	}) %>
 				<p>comment number:<%= counter %></p>
-				
+			
+				<hr />
+			</div>
 			<% }) %>
 			</div
 			

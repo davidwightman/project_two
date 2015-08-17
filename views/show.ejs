@@ -4,27 +4,30 @@
 		<link rel="stylesheet" href="http://localhost:3000/skeleton.css">
 		<link rel="stylesheet" href="http://localhost:3000/normalize.css">
 		<link rel = "stylesheet" type = "text.css" href= "http://localhost:3000/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
 		<div class="container">
 			<div class="sixteen columns">
-				<p>Forum</p>
+				<h1>Welcome to the Forum</h1>
+				<hr />
 			</div>
-		<div class="six columns">
-			<p>Title: <%= thread.title %></p>
+		<div class="five columns">
+			<h4>Title: <%= thread.title %></h4>
 		</div>
-		<div class="three columns">
-			<p>Author: <%= thread.user_name %></p>	
+		<div class="four columns">
+			<h4>Author: <%= thread.user_name %></h4>	
 		</div>	
-		<div class="two columns">
+		<div class="one columns">
 			<img src="<%= thread.user_avatar %>" width="50" height="auto">
 		</div>
-		<div class="sixteen columns">
+		<div class="fifteen columns">
 			<p>Post: <%= thread.content %></p>
+			<hr />
 		</div>
 		<div class="six columns">
-			<p>votes: <%= thread.votes %></p>
+			<p>Votes: <%= thread.votes %></p>
 		</div>
 		
 
@@ -36,8 +39,8 @@
 		<%if (user.thread_id == thread.id) { %>
 		
 		
-		<p><img src="<%= user.user_avatar %>" width="50" height="auto"> author: <%= user.user_name %><BR>
-		comment: <%= user.content %></p>
+		<p><img src="<%= user.user_avatar %>" width="50" height="auto"> Comment Author: <%= user.user_name %><BR>
+		Comment: <%= user.content %></p>
 		
 		
 		
@@ -49,7 +52,7 @@
 </div>
 		
 		<div class="sixteen columns">
-		<p>Number of comments: <%= counter %></p>
+		<p>Number of Comments: <%= counter %></p>
 		</div>
 
 
@@ -59,7 +62,7 @@
 		
 		<div class="sixteen columns">
 			<form action="/threads/<%= thread.id %>/comments" method="POST">
-				<textarea name="content" placeholder="leave a comment"></textarea></br>
+				<textarea name="content" placeholder="leave a comment" width="500px";></textarea></br>
 				<button name="button2">Submit comment</button>
 				<select name="comment_author_id">
 				<% user.forEach(function(usr){ %>
@@ -67,16 +70,21 @@
 				</select>
 			</form>
 		<div>
-<div class="sixteen columns">
+<div class="five columns">
 	<form action="/threads/<%= thread.id %>?_method=DELETE" method="POST">
 	<button name="button3">Delete this Thread</button>
 	</form>
 </div>
-
+<div class="five columns">
 			<form action="/threads/<%= thread.id %>/votes" method="POST">
 				<button name="button1">Vote for this post.</button>
 			</form>
-		
+		</div>
+	
+	<div class="10 columns">
+	
+		<a href ="/threads/">Back to the Forum.</a><BR>
+	</div>
 
 		</div>
 </div>
